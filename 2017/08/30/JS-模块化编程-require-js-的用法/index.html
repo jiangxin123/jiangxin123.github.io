@@ -5,17 +5,17 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.johanssonjx.com">
   <title>JS 模块化编程 require.js 的用法 | johansson的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="##什么是RequireJS?  RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用, 但它也可以用在其他脚本环境, 就像 Rhino and Node. 使用RequireJS加载模块化脚本将提高代码的加载速度和质量。 ##为什么用RequireJS?   异步“加载”。我们知道，通常网站都会把script脚本的放在html的最后，这样就可以避免浏览器执行js带来">
-<meta name="keywords" content="js require.js">
+<meta name="keywords" content="js,require.js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS 模块化编程 require.js 的用法">
-<meta property="og:url" content="http://yoursite.com/2017/08/30/JS-模块化编程-require-js-的用法/index.html">
+<meta property="og:url" content="http://www.johanssonjx.com/2017/08/30/JS-模块化编程-require-js-的用法/index.html">
 <meta property="og:site_name" content="johansson的个人站">
 <meta property="og:description" content="##什么是RequireJS?  RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用, 但它也可以用在其他脚本环境, 就像 Rhino and Node. 使用RequireJS加载模块化脚本将提高代码的加载速度和质量。 ##为什么用RequireJS?   异步“加载”。我们知道，通常网站都会把script脚本的放在html的最后，这样就可以避免浏览器执行js带来">
-<meta property="og:updated_time" content="2017-08-30T05:45:06.594Z">
+<meta property="og:updated_time" content="2017-08-30T06:07:55.709Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS 模块化编程 require.js 的用法">
 <meta name="twitter:description" content="##什么是RequireJS?  RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用, 但它也可以用在其他脚本环境, 就像 Rhino and Node. 使用RequireJS加载模块化脚本将提高代码的加载速度和质量。 ##为什么用RequireJS?   异步“加载”。我们知道，通常网站都会把script脚本的放在html的最后，这样就可以避免浏览器执行js带来">
@@ -23,7 +23,7 @@
     <link rel="alternative" href="/atom.xml" title="johansson的个人站" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -35,6 +35,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?2c6d0c4bbf94037f5cf832505b3421b9";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -52,6 +62,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">johansson</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">一枚热爱学习的前端狗</p>
 		
 
 		<nav class="header-menu">
@@ -108,6 +120,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">johansson</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>一枚热爱学习的前端狗<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -180,8 +194,10 @@
 <li>按需加载。通过RequireJS，你可以在需要加载js逻辑的时候再加载对应 的js模块，这样避免了在初始化网页的时候发生大量的请求和数据传输，或许对于一些人来说，某些模块可能他根本就不需要，那就显得没有必要。</li>
 <li>更加方便的模块依赖管理。相信你曾经一定遇到过因为script标签顺序问题而导致依赖关系发生错误，这个函数未定义，那个变量undefine之类的。通过RequireJS的机制，你能确保在所有的依赖模块都加载以后再执行相关的文件，所以可以起到依赖管理的作用。</li>
 <li>更加高效的版本管理。想一想，如果你还是用的script脚本引入的方式来引入一个jQuery2.x的文件，然后你有100个页面都是这么引用的，那当你想换成jQuery3.x，那你就不得不去改这100个页面。但是如果你的requireJS有在config中做jQuery的path映射，那你只需要改一处地方即可。</li>
-<li>当然还有一些诸如cdn加载不到js文件，可以请求本地文件等其它的优点，这里就不一一列举了。<br>##require.js的加载<br>使用require.js的第一步，是先去官方网站下载最新版本。<br>下载后，假定把它放在js子目录下面，就可以加载了。</li>
+<li>当然还有一些诸如cdn加载不到js文件，可以请求本地文件等其它的优点，这里就不一一列举了。</li>
 </ol>
+<a id="more"></a>
+<p>##require.js的加载<br>使用require.js的第一步，是先去官方网站下载最新版本。<br>下载后，假定把它放在js子目录下面，就可以加载了。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/require.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
 <p>加载require.js以后，下一步就要加载我们自己的代码了。假定我们自己的代码文件是main.js，也放在js目录下面。那么，只需要写成下面这样就行了：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/require.js&quot; data-main=&quot;js/main&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
@@ -251,7 +267,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">js require.js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">require.js</a>
         		</li>
       		
 		</ul>
@@ -307,7 +327,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/30/JS-模块化编程-require-js-的用法/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://www.johanssonjx.com/2017/08/30/JS-模块化编程-require-js-的用法/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -448,6 +468,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">js require.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">require.js</a>
               </li>
             
             <div class="clearfix"></div>

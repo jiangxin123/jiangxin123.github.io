@@ -5,13 +5,13 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://yoursite.com">
+  <link rel="dns-prefetch" href="http://www.johanssonjx.com">
   <title>johansson的个人站</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="johansson的博客">
 <meta property="og:type" content="website">
 <meta property="og:title" content="johansson的个人站">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:url" content="http://www.johanssonjx.com/index.html">
 <meta property="og:site_name" content="johansson的个人站">
 <meta property="og:description" content="johansson的博客">
 <meta name="twitter:card" content="summary">
@@ -21,7 +21,7 @@
     <link rel="alternative" href="/atom.xml" title="johansson的个人站" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/images/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.266c1c.css">
   <style type="text/css">
@@ -33,6 +33,16 @@
   
 
   
+<script>
+var _hmt = _hmt || [];
+(function() {
+	var hm = document.createElement("script");
+	hm.src = "https://hm.baidu.com/hm.js?2c6d0c4bbf94037f5cf832505b3421b9";
+	var s = document.getElementsByTagName("script")[0]; 
+	s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
 
 </head>
 
@@ -50,6 +60,8 @@
 		<hgroup>
 		  <h1 class="header-author"><a href="/">johansson</a></h1>
 		</hgroup>
+		
+		<p class="header-subtitle">一枚热爱学习的前端狗</p>
 		
 
 		<nav class="header-menu">
@@ -106,6 +118,8 @@
 			<hgroup>
 			  <h1 class="header-author js-header-author">johansson</h1>
 			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>一枚热爱学习的前端狗<i class="icon icon-quo-right"></i></p>
 			
 			
 			
@@ -180,34 +194,11 @@
 <li>按需加载。通过RequireJS，你可以在需要加载js逻辑的时候再加载对应 的js模块，这样避免了在初始化网页的时候发生大量的请求和数据传输，或许对于一些人来说，某些模块可能他根本就不需要，那就显得没有必要。</li>
 <li>更加方便的模块依赖管理。相信你曾经一定遇到过因为script标签顺序问题而导致依赖关系发生错误，这个函数未定义，那个变量undefine之类的。通过RequireJS的机制，你能确保在所有的依赖模块都加载以后再执行相关的文件，所以可以起到依赖管理的作用。</li>
 <li>更加高效的版本管理。想一想，如果你还是用的script脚本引入的方式来引入一个jQuery2.x的文件，然后你有100个页面都是这么引用的，那当你想换成jQuery3.x，那你就不得不去改这100个页面。但是如果你的requireJS有在config中做jQuery的path映射，那你只需要改一处地方即可。</li>
-<li>当然还有一些诸如cdn加载不到js文件，可以请求本地文件等其它的优点，这里就不一一列举了。<br>##require.js的加载<br>使用require.js的第一步，是先去官方网站下载最新版本。<br>下载后，假定把它放在js子目录下面，就可以加载了。</li>
+<li>当然还有一些诸如cdn加载不到js文件，可以请求本地文件等其它的优点，这里就不一一列举了。</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/require.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>加载require.js以后，下一步就要加载我们自己的代码了。假定我们自己的代码文件是main.js，也放在js目录下面。那么，只需要写成下面这样就行了：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;script src=&quot;js/require.js&quot; data-main=&quot;js/main&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure>
-<p>data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。</p>
-<p>##主模块的写法<br>上一节的main.js，我把它称为”主模块”，意思是整个网页的入口代码。它有点像C语言的main()函数，所有代码都从这儿开始运行。<br>下面就来看，怎么写main.js。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// main.js</div><div class="line">require([&apos;moduleA&apos;, &apos;moduleB&apos;, &apos;moduleC&apos;], function (moduleA, moduleB, moduleC)&#123;</div><div class="line">　　// some code here</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>require()函数接受两个参数。第一个参数是一个数组，表示所依赖的模块，上例就是[‘moduleA’, ‘moduleB’, ‘moduleC’]，即主模块依赖这三个模块；第二个参数是一个回调函数，当前面指定的模块都加载成功后，它将被调用。加载的模块会以参数形式传入该函数，从而在回调函数内部就可以使用这些模块。<br>require()异步加载moduleA，moduleB和moduleC，浏览器不会失去响应；它指定的回调函数，只有前面的模块都加载成功后，才会运行，解决了依赖性的问题。<br>下面，我们看一个实际的例子。<br>假定主模块依赖jquery、underscore和backbone这三个模块，main.js就可以这样写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">require([&apos;jquery&apos;, &apos;underscore&apos;, &apos;backbone&apos;], function ($, _, Backbone)&#123;</div><div class="line">　　// some code here</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
-<p>##模块的加载<br>上一节最后的示例中，主模块的依赖模块是[‘jquery’, ‘underscore’, ‘backbone’]。默认情况下，require.js假定这三个模块与main.js在同一个目录，文件名分别为jquery.js，underscore.js和backbone.js，然后自动加载。<br>使用require.config()方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">　　require.config(&#123;</div><div class="line">　　　　paths: &#123;</div><div class="line">　　　　　　&quot;jquery&quot;: &quot;jquery.min&quot;,</div><div class="line">　　　　　　&quot;underscore&quot;: &quot;underscore.min&quot;,</div><div class="line">　　　　　　&quot;backbone&quot;: &quot;backbone.min&quot;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
-<p>上面的代码给出了三个模块的文件名，路径默认与main.js在同一个目录（js子目录）。如果这些模块在其他目录，比如js/lib目录，则有两种写法。一种是逐一指定路径。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">　　require.config(&#123;</div><div class="line">　　　　paths: &#123;</div><div class="line">　　　　　　&quot;jquery&quot;: &quot;lib/jquery.min&quot;,</div><div class="line">　　　　　　&quot;underscore&quot;: &quot;lib/underscore.min&quot;,</div><div class="line">　　　　　　&quot;backbone&quot;: &quot;lib/backbone.min&quot;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
-<p>另一种则是直接改变基目录（baseUrl）。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">　　require.config(&#123;</div><div class="line">　　　　baseUrl: &quot;js/lib&quot;,</div><div class="line">　　　　paths: &#123;</div><div class="line">　　　　　　&quot;jquery&quot;: &quot;jquery.min&quot;,</div><div class="line">　　　　　　&quot;underscore&quot;: &quot;underscore.min&quot;,</div><div class="line">　　　　　　&quot;backbone&quot;: &quot;backbone.min&quot;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
-<p>##AMD模块的写法</p>
-<p>require.js加载的模块，采用AMD规范。也就是说，模块必须按照AMD的规定来写。<br>具体来说，就是模块必须采用特定的define()函数来定义。如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。<br>假定现在有一个math.js文件，它定义了一个math模块。那么，math.js就要这样写：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">　　// math.js</div><div class="line">　　define(function ()&#123;</div><div class="line">　　　　var add = function (x,y)&#123;</div><div class="line">　　　　　　return x+y;</div><div class="line">　　　　&#125;;</div><div class="line">　　　　return &#123;</div><div class="line">　　　　　　add: add</div><div class="line">　　　　&#125;;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
-<p>加载方法如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">　　// main.js</div><div class="line">　　require([&apos;math&apos;], function (math)&#123;</div><div class="line">　　　　alert(math.add(1,1));</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
-<p>如果这个模块还依赖其他模块，那么define()函数的第一个参数，必须是一个数组，指明该模块的依赖性。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">　　define([&apos;myLib&apos;], function(myLib)&#123;</div><div class="line">　　　　function foo()&#123;</div><div class="line">　　　　　　myLib.doSomething();</div><div class="line">　　　　&#125;</div><div class="line">　　　　return &#123;</div><div class="line">　　　　　　foo : foo</div><div class="line">　　　　&#125;;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
-<p>当require()函数加载上面这个模块的时候，就会先加载myLib.js文件</p>
-<p>##加载非规范的模块<br>理论上，require.js加载的模块，必须是按照AMD规范、用define()函数定义的模块。但是实际上，虽然已经有一部分流行的函数库（比如jQuery）符合AMD规范，更多的库并不符合。那么，require.js是否能够加载非规范的模块呢？<br>回答是可以的。<br>这样的模块在用require()加载之前，要先用require.config()方法，定义它们的一些特征。<br>举例来说，underscore和backbone这两个库，都没有采用AMD规范编写。如果要加载它们的话，必须先定义它们的特征。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">　　require.config(&#123;</div><div class="line">　　　　shim: &#123;</div><div class="line"></div><div class="line">　　　　　　&apos;underscore&apos;:&#123;</div><div class="line">　　　　　　　　exports: &apos;_&apos;</div><div class="line">　　　　　　&#125;,</div><div class="line">　　　　　　&apos;backbone&apos;: &#123;</div><div class="line">　　　　　　　　deps: [&apos;underscore&apos;, &apos;jquery&apos;],</div><div class="line">　　　　　　　　exports: &apos;Backbone&apos;</div><div class="line">　　　　　　&#125;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;);</div></pre></td></tr></table></figure>
-<p>require.config()接受一个配置对象，这个对象除了有前面说过的paths属性之外，还有一个shim属性，专门用来配置不兼容的模块。具体来说，每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。<br>比如，jQuery的插件可以这样定义：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">　　shim: &#123;</div><div class="line">　　　　&apos;jquery.scroll&apos;: &#123;</div><div class="line">　　　　　　deps: [&apos;jquery&apos;],</div><div class="line">　　　　　　exports: &apos;jQuery.fn.scroll&apos;</div><div class="line">　　　　&#125;</div><div class="line">　　&#125;</div></pre></td></tr></table></figure>
+        
+          <a class="article-more-a" href="/2017/08/30/JS-模块化编程-require-js-的用法/#more">more >></a>
+        
       
 
       
@@ -220,7 +211,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">js require.js</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">require.js</a>
         		</li>
       		
 		</ul>
@@ -282,59 +277,9 @@
       
         <p><img src="http://photo.foter.com/photos/398/creative-brush-notebook.jpg" alt="illustration"></p>
 <h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>本文旨在帮助没有IT背景的同学着手搭建一个酷炫的个人博客网站，基于Windows平台</p>
-<h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>注册<a href="http://baike.baidu.com/item/GitHub" target="_blank" rel="external">GitHub</a>账号，了解一点有关Github的知识。</p>
-<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>假设我们已经有了一个github账号，那么开始准备环境</p>
-<p>1.安装Git客户端<br><a href="https://www.git-scm.com/download/" target="_blank" rel="external">download git</a><br>下载好git安装包之后按照一般程序安装步骤安装，有选项则选择默认配置，一路next</p>
-<p>2.安装Node.js<br><a href="https://nodejs.org/dist/v6.10.2/node-v6.10.2-x64.msi" target="_blank" rel="external">download node.js</a><br>下载好node.js安装包之后按照一般程序安装步骤安装，有选项则选择默认配置，一路next<br>具体安装细节可参考<a href="http://www.runoob.com/nodejs/nodejs-install-setup.html" target="_blank" rel="external">http://www.runoob.com/nodejs/nodejs-install-setup.html</a></p>
-<p>3.安装Notepad++<br><a href="https://notepad-plus-plus.org/repository/7.x/7.3.3/npp.7.3.3.Installer.exe" target="_blank" rel="external">download notepad++</a><br>安装步骤同上</p>
-<h3 id="建立仓库"><a href="#建立仓库" class="headerlink" title="建立仓库"></a>建立仓库</h3><p>这时我们已经安装好了相关的软件，接下来初始化配置一个存放博客资源的GitHub仓库</p>
-<p>1.登录GitHub官网，新建后缀名为<code>.github.io</code>的仓库</p>
-<p>点击页面右上角加号，选择<code>New resposity</code></p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/new%20repo-1.png" alt="new repo-1"></p>
-<p>进入仓库创建页面<br>在<code>Respository name</code>下填写你的博客仓库名，切记以<code>.github.io</code>为后缀名，<code>Description</code>一栏可以随便填写一些描述文字，空着也行</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/new%20repo-2.png" alt="new repo-2"></p>
-<p>完成博客仓库的创建之后，将跳转到如下界面</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/repo%20done.png" alt="repo done"></p>
-<p>2.给仓库开启GitHub-pages功能<br>点击博客仓库首页右上侧的<code>Settings</code>，跳转到仓库的设置界面，向下拖动页面到<code>GitHub Pages</code>一栏</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/Github-pages.png" alt="Github-pages"></p>
-<p>点击<code>Automatic page generator</code>，Github将会自动替你创建出一个github-pages的页面。 如果配置一切正确，那么大约15分钟之后，yourname.github.io这个网址就可以正常访问了。</p>
-<p>3.添加本机ssh密钥到github</p>
-<p>在桌面上右击鼠标，选择<code>Git GUI Here</code><br><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/git%20gui.png" alt="git gui"></p>
-<p>进入git gui界面，选择<code>Help</code>-<code>Show SSH Key</code><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/git%20gui-2.png" alt="git gui-2"></p>
-<p>点击<code>Generate Key</code>生成ssh key，出现如图一串密钥，全部复制<br><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/generate-ssh-key.png" alt="generate-ssh-key"></p>
-<p>登录github，点击头像选择<code>Settings</code></p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/ssh-setting.png" alt="ssh-setting"></p>
-<p>进入设置页面选择<code>SSH and GPG keys</code></p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/ssh%20setting2.png" alt="ssh setting2"></p>
-<p>进入SSH设置页面，点击右上角绿色按钮<code>New SSH key</code>，然后把复制的ssh key密钥粘贴到<code>Key</code>文本框里，<code>Title</code>一栏随便起个名字<br><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/add%20ssh%20key.png" alt="add ssh key"><br>最后点击<code>Add SSH key</code><br>到了这里，GitHub一侧的配置工作全部完成</p>
-<h3 id="Hexo搭建"><a href="#Hexo搭建" class="headerlink" title="Hexo搭建"></a>Hexo搭建</h3><p>1.安装Hexo<br>创建一个文件夹存放hexo博客资源，进入文件夹右击鼠标选择<code>Git Bash Here</code>，将弹出一个黑乎乎的终端窗口，之后我们将在这个窗口内敲一些操作命令，我们暂时不用去了解终端命令行，只需照着打字即可</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/new%20folder.png" alt="new folder"></p>
-<p>在终端中输入<code>npm install hexo-cli -g</code>，这条命令用来安装hexo-cli<br>安装完成将会看到下图（忽略warning）</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/install%20hexo-1.png" alt="install hexo-1"></p>
-<p>输入<code>nmp install hexo --save</code>，安装完成后屏幕里将输出大堆信息提示<br>检查hexo是否正确安装，输入<code>hexo -v</code>，下图为正确安装的提示信息</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/hexo-v.PNG" alt="hexo-v"></p>
-<p>2.初始化Hexo<br>输入<code>hexo init</code>进行初始化<br>安装hexo的相关npm依赖模块：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install</div></pre></td></tr></table></figure>
-<p>3.测试体验hexo博客<br>分别依次输入以下命令</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">hexo g</div><div class="line">hexo s</div></pre></td></tr></table></figure>
-<p>出现如下提示<br><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/run%20hexo.PNG" alt="run hexo"></p>
-<p>在浏览器中打开<code>http://localhost:4000</code>，将打开hexo站点，主题是hexo默认的</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/hexo%20homepage.png" alt="hexo homepage"></p>
-<p>到了这一步，hexo的基本配置就完成了</p>
-<p>3.把hexo部署到github-pages上<br>参考<a href="https://hexo.io/zh-cn/docs/configuration.html" target="_blank" rel="external">Hexo 官方配置文档</a>，通过修改hexo主配置文件<code>_config.yml</code>来部署hexo<br>用Notepad++打开<code>_config.yml</code>，拖到文件最后，有如下配置语句<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></div><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>:</div></pre></td></tr></table></figure></p>
-<p>修改如下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Deployment</span></div><div class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></div><div class="line">deploy:  </div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repository: git@github.com:yourname/yourname.github.io.git</div><div class="line">  branch: master</div></pre></td></tr></table></figure></p>
-<p>(注：yourname是你的github用户名)</p>
-<p>保存后，在当前文件夹打开Git Bash Here<br>安装hexo的git依赖模块，出现弹窗则输入github账号和密码</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
-<p>发布hexo到github-pages<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d -g</div></pre></td></tr></table></figure></p>
-<h3 id="感受hexo博客发布"><a href="#感受hexo博客发布" class="headerlink" title="感受hexo博客发布"></a>感受hexo博客发布</h3><p>1.新建一篇博客，hexo命令语法课参考<a href="https://hexo.io/zh-cn/docs/commands.html" target="_blank" rel="external">Hexo指令官方文档</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo n <span class="string">"这是第一篇测试博客"</span></div></pre></td></tr></table></figure></p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/create%20blog.PNG" alt="create blog"><br>这条命令将在<code>source/_posts</code>目录下新建一个<code>.md</code>后缀的markdown文件，这就是你的博客文章的载体，你需要了解<a href="http://wowubuntu.com/markdown/" target="_blank" rel="external">markdown</a>语法，使用markdown来编写你的博客</p>
-<p>2.编写博客</p>
-<p>用Notepad++打开<code>这是第一篇测试博客.md</code>，编写文章内容，最后保存</p>
-<p><img src="https://github.com/Zhiwei1996/Zhiwei1996.github.io/raw/master/images/edit%20blog.PNG" alt="edit blog"></p>
-<p>发布文章</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo d -g</div></pre></td></tr></table></figure>
-<h3 id="换个漂亮的主题"><a href="#换个漂亮的主题" class="headerlink" title="换个漂亮的主题"></a>换个漂亮的主题</h3><h3 id="建立git分支给博客做备份"><a href="#建立git分支给博客做备份" class="headerlink" title="建立git分支给博客做备份"></a>建立git分支给博客做备份</h3>
+        
+          <a class="article-more-a" href="/2017/08/30/hexo搭建博客教程/#more">more >></a>
+        
       
 
       
@@ -347,77 +292,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/08/30/hexo搭建博客教程/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/08/30/hello-world/">Hello World</a>
-    </h1>
-  
-
-        
-        <a href="/2017/08/30/hello-world/" class="archive-article-date">
-  	<time datetime="2017-08-30T02:52:06.576Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/08/30/hello-world/">展开全文 >></a>
         </p>
       
 
@@ -541,6 +415,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">js require.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">require.js</a>
               </li>
             
             <div class="clearfix"></div>
