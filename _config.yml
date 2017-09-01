@@ -26,6 +26,7 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+ - resume.md
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -78,7 +79,7 @@ theme: yilia
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/jiangxin123/johansson.github.io.git
+  repo: https://github.com/jiangxin123/jiangxin123.github.io.git
   branch: master
 
 jsonContent:
