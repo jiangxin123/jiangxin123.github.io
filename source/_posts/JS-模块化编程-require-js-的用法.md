@@ -5,9 +5,9 @@ tags:
 	- js 
 	- require.js
 ---
-##什么是RequireJS?
+## 什么是RequireJS?
 >RequireJS 是一个JavaScript模块加载器。它非常适合在浏览器中使用, 但它也可以用在其他脚本环境, 就像 Rhino and Node. 使用RequireJS加载模块化脚本将提高代码的加载速度和质量。
-##为什么用RequireJS?
+## 为什么用RequireJS?
 
  1. 异步“加载”。我们知道，通常网站都会把script脚本的放在html的最后，这样就可以避免浏览器执行js带来的页面阻塞。使用RequireJS，会在相关的js加载后执行回调函数，这个过程是异步的，所以它不会阻塞页面。
  2. 按需加载。通过RequireJS，你可以在需要加载js逻辑的时候再加载对应 的js模块，这样避免了在初始化网页的时候发生大量的请求和数据传输，或许对于一些人来说，某些模块可能他根本就不需要，那就显得没有必要。
@@ -17,7 +17,7 @@ tags:
 
 
 <!--more-->
-##require.js的加载
+## require.js的加载
 使用require.js的第一步，是先去官方网站下载最新版本。
 下载后，假定把它放在js子目录下面，就可以加载了。
 
@@ -31,7 +31,7 @@ tags:
 ```
 data-main属性的作用是，指定网页程序的主模块。在上例中，就是js目录下面的main.js，这个文件会第一个被require.js加载。由于require.js默认的文件后缀名是js，所以可以把main.js简写成main。
 
-##主模块的写法
+## 主模块的写法
 上一节的main.js，我把它称为"主模块"，意思是整个网页的入口代码。它有点像C语言的main()函数，所有代码都从这儿开始运行。
 下面就来看，怎么写main.js。
 
@@ -52,7 +52,7 @@ require(['jquery', 'underscore', 'backbone'], function ($, _, Backbone){
 });
 
 ```
-##模块的加载
+## 模块的加载
 上一节最后的示例中，主模块的依赖模块是['jquery', 'underscore', 'backbone']。默认情况下，require.js假定这三个模块与main.js在同一个目录，文件名分别为jquery.js，underscore.js和backbone.js，然后自动加载。
 使用require.config()方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。参数就是一个对象，这个对象的paths属性指定各个模块的加载路径。
 
@@ -88,7 +88,7 @@ require(['jquery', 'underscore', 'backbone'], function ($, _, Backbone){
 　　　　}
 　　});
 ```
-##AMD模块的写法
+## AMD模块的写法
 
 require.js加载的模块，采用AMD规范。也就是说，模块必须按照AMD的规定来写。
 具体来说，就是模块必须采用特定的define()函数来定义。如果一个模块不依赖其他模块，那么可以直接定义在define()函数之中。
@@ -127,7 +127,7 @@ require.js加载的模块，采用AMD规范。也就是说，模块必须按照A
 ```
 当require()函数加载上面这个模块的时候，就会先加载myLib.js文件
 
-##加载非规范的模块
+## 加载非规范的模块
 理论上，require.js加载的模块，必须是按照AMD规范、用define()函数定义的模块。但是实际上，虽然已经有一部分流行的函数库（比如jQuery）符合AMD规范，更多的库并不符合。那么，require.js是否能够加载非规范的模块呢？
 回答是可以的。
 这样的模块在用require()加载之前，要先用require.config()方法，定义它们的一些特征。
