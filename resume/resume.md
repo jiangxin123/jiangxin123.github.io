@@ -20,9 +20,9 @@
 
 
 * 熟悉HTML5、CSS3，对代码可读性、规范性、语义化有一定认识。
-* 熟悉原生JavaScript（ES5、ES6），对DOM操作、Ajax、正则、闭包、原型链等都有比较深入的认识。。
+* 熟悉原生JavaScript（ES5、ES6），对DOM操作、Ajax、正则、闭包、原型链等都有比较深入的认识。
 * 掌握jQuery、Vue.js、Bootstrap等主流库和框架的使用。
-* 熟悉前后端分离技术，能使用 Ajax 和后端做数据交互，规范数据格式。
+* 熟悉前后端分离技术，能使用 Ajax 和后端做数据交互。
 * 掌握Node.js，能使用express开发网站。
 * 熟悉 Gulp、Webpack 等前端构建工具，Less 预处理语言
 * 熟练使用git、svn等版本管理工具进行协同开发。
