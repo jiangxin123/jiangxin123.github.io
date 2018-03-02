@@ -25,7 +25,7 @@
 * 熟悉前后端分离技术，能使用 Ajax 和后端做数据交互。
 * 掌握Node.js，能使用express开发网站。
 * 熟悉 Gulp、Webpack 等前端构建工具，Less 预处理语言
-* 熟练使用git、svn等版本管理工具进行协同开发。
+* 熟练使用git进行进行版本管理和协同开发。
 * 掌握python基本用法，熟悉django的开发流程。
 
 专注并且热爱web开发，并富有团队合作精神，能书写规范，美观，精简的JavaScript以及HTML/CSS代码
